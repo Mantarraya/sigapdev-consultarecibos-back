@@ -22,28 +22,28 @@ import edu.moduloalumno.model.PruebaTCambio;
 
 @Component("floatformat")
 public class FloatFormat {
-
+	
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
 	private static SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 	private static String dateString = format.format( new Date()   );
-
+	
 	public float round(float number, int decimalPlace) {
 		BigDecimal bd = new BigDecimal(number);
 		bd = bd.setScale(decimalPlace, BigDecimal.ROUND_HALF_UP);
 		return bd.floatValue();
 	}
-
+	
 	// tipo de cambio api sunat
 	public PruebaTCambio dolares_a_soles(String fecha) throws MalformedURLException, ParseException {
 
 		logger.info("fuck "+fecha);
-
-  		PruebaTCambio p= null;
+		
+  		PruebaTCambio p= null;		
   		URL url = new URL("https://api.sunat.cloud/cambio/"+fecha);
 		ObjectMapper mapper = new ObjectMapper();
 
-		try {
-
+		try {				
+			
 	        BufferedReader in = new BufferedReader(
 	        new InputStreamReader(url.openStream()));
 
@@ -54,14 +54,14 @@ public class FloatFormat {
 	        			lineafinal+=inputLine;
 	         campos++;
 	        }
-
+	        
 	        lineafinal="{"+lineafinal+"}";
-
+	        
 	        logger.info("cuerpo "+lineafinal.trim());
-
+	        
 	        Reader reader = new StringReader(lineafinal.trim());
 	        p = mapper.readValue(reader, PruebaTCambio.class);
-
+			
 			logger.info("> objeto "+p);
 			if(p.getCompra() == 0.0 ) {
 				logger.info("> string "+ dateString);
@@ -69,12 +69,12 @@ public class FloatFormat {
 			}
 			logger.info("> objeto "+p);
 			in.close();
-
+		
 		} catch (IOException e){
 			System.out.println("ERROR! USUARIOS NO GUARDADOS : " + e.getMessage());
 		}
-
-		return p;
+	
+		return p; 
   	}
-
+	
 }
