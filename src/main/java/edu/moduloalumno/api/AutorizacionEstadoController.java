@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import edu.moduloalumno.dao.IAutorizacionEstadoDAO;
-import edu.moduloalumno.model.AutorizacionEstadoJSON;;
+import edu.moduloalumno.entity.AutorizacionEstado;
 
 @RestController
 @RequestMapping("autorizacion/estado")
@@ -27,24 +27,24 @@ public class AutorizacionEstadoController {
 	private IAutorizacionEstadoDAO dao;
 
 	@RequestMapping(value = "/listar", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<List<AutorizacionEstadoJSON>> getAllAutorizacionEstado() {
+	public ResponseEntity<List<AutorizacionEstado>> getAllAutorizacionEstado() {
 		logger.info("> getAllAutorizacionEstado [AutorizacionEstadoJSON]");
 
-		List<AutorizacionEstadoJSON> list = null;
+		List<AutorizacionEstado> list = null;
 		try {
 			list = dao.getAllAutorizacionEstado();
 
 			if (list == null) {
-				list = new ArrayList<AutorizacionEstadoJSON>();
+				list = new ArrayList<AutorizacionEstado>();
 			}
 
 		} catch (Exception e) {
 			logger.error("Unexpected Exception caught.", e);
-			return new ResponseEntity<List<AutorizacionEstadoJSON>>(list, HttpStatus.INTERNAL_SERVER_ERROR);
+			return new ResponseEntity<List<AutorizacionEstado>>(list, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 
 		logger.info("< getAllAutorizacionEstado [AutorizacionEstadoJSON]");
-		return new ResponseEntity<List<AutorizacionEstadoJSON>>(list, HttpStatus.OK);
+		return new ResponseEntity<List<AutorizacionEstado>>(list, HttpStatus.OK);
 	}
 
 
