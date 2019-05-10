@@ -2,17 +2,17 @@ package edu.moduloalumno.dao;
 
 import java.util.List;
 
-import edu.moduloalumno.model.AutorizacionEstadoJSON;
+import edu.moduloalumno.entity.AutorizacionEstado;
 
 public interface IAutorizacionEstadoDAO {
 
-	List<AutorizacionEstadoJSON> getAllAutorizacionEstado();
+	List<AutorizacionEstado> getAllAutorizacionEstado();
 
-	AutorizacionEstadoJSON getAutorizacionEstadoById(int id_autorizacion_estado);
+	AutorizacionEstado getAutorizacionEstadoById(int id_autorizacion_estado);
 
-	AutorizacionEstadoJSON addAutorizacionEstado(AutorizacionEstadoJSON AutorizacionEstado);
+	AutorizacionEstado addAutorizacionEstado(AutorizacionEstado AutorizacionEstado);
 
-	void updateAutorizacionEstado(AutorizacionEstadoJSON AutorizacionEstado);
+	void updateAutorizacionEstado(AutorizacionEstado AutorizacionEstado);
 
 	void deleteAutorizacionEstado(int id_autorizacion_estado);
 
