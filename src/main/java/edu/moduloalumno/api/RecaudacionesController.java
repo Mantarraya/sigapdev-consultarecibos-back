@@ -230,7 +230,7 @@ public class RecaudacionesController {
         public void updateRecaudaciones(@PathVariable("id_rec") Integer id_rec, @PathVariable("cod_alumno") String cod_alumno, @PathVariable("id_programa") Integer id_programa){
             
             logger.info("> Commo00n: " + id_rec + " " + cod_alumno + " " + id_programa);
-            Integer response = 0;
+            //Integer response = 0;
             
             try{
                  recaudacionesService.updateRecaudaciones(id_rec, cod_alumno, id_programa);
