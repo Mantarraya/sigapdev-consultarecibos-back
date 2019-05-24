@@ -13,38 +13,38 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import edu.moduloalumno.dao.IAutorizacionEstadoDAO;
-import edu.moduloalumno.entity.AutorizacionEstado;
+import edu.moduloalumno.dao.IMatriculaCabDAO;
+import edu.moduloalumno.entity.MatriculaCab;
 
 @RestController
 @RequestMapping("autorizacion")
-public class AutorizacionEstadoController {
+public class MatriculaCabController {
 
 
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
 
 	@Autowired
-	private IAutorizacionEstadoDAO dao;
+	private IMatriculaCabDAO dao;
 
 	@RequestMapping(value = "/estado/listar", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<List<AutorizacionEstado>> getAllAutorizacionEstado() {
-		logger.info("> getAllAutorizacionEstado [AutorizacionEstadoJSON]");
+	public ResponseEntity<List<MatriculaCab>> getAllMatriculaCab() {
+		logger.info("> getAllMatriculaCab [MatriculaCabJSON]");
 
-		List<AutorizacionEstado> list = null;
+		List<MatriculaCab> list = null;
 		try {
-			list = dao.getAllAutorizacionEstado();
+			list = dao.getAllMatriculaCab();
 
 			if (list == null) {
-				list = new ArrayList<AutorizacionEstado>();
+				list = new ArrayList<MatriculaCab>();
 			}
 
 		} catch (Exception e) {
 			logger.error("Unexpected Exception caught.", e);
-			return new ResponseEntity<List<AutorizacionEstado>>(list, HttpStatus.INTERNAL_SERVER_ERROR);
+			return new ResponseEntity<List<MatriculaCab>>(list, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 
-		logger.info("< getAllAutorizacionEstado [AutorizacionEstadoJSON]");
-		return new ResponseEntity<List<AutorizacionEstado>>(list, HttpStatus.OK);
+		logger.info("< getAllMatriculaCab [MatriculaCabJSON]");
+		return new ResponseEntity<List<MatriculaCab>>(list, HttpStatus.OK);
 	}
 
 

@@ -21,7 +21,7 @@ public class AutorizacionEstadoDAOImpl implements IAutorizacionEstadoDAO {
 
 	@Override
 	public AutorizacionEstado getAutorizacionEstadoById(int id_autorizacion_estado) {
-		String sql = "SELECT * FROM autorizacion_estado WHERE id_autorizacion = ?";
+		String sql = "SELECT id_autorizacion, desc_autoriz_estado FROM autorizacion_estado WHERE id_autorizacion = ?";
 		RowMapper<AutorizacionEstado> rowMapper = new AutorizacionEstadoProgramaRowMapper();
 		AutorizacionEstado autorizacionEstado = jdbcTemplate.queryForObject(sql, rowMapper, id_autorizacion_estado);
 		return autorizacionEstado;
@@ -29,7 +29,7 @@ public class AutorizacionEstadoDAOImpl implements IAutorizacionEstadoDAO {
 
 	@Override
 	public List<AutorizacionEstado> getAllAutorizacionEstado() {
-		String sql = "SELECT id_alum, cod_alumno, id_programa FROM alumno_alumno_programa";
+		String sql = "SELECT id_autorizacion, desc_autoriz_estado FROM autorizacion_estado";
 
 		RowMapper<AutorizacionEstado> rowMapper = new AutorizacionEstadoProgramaRowMapper();
 		return this.jdbcTemplate.query(sql, rowMapper);
