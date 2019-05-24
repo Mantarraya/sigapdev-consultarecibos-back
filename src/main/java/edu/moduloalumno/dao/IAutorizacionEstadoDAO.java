@@ -10,4 +10,5 @@ public interface IAutorizacionEstadoDAO {
 
 	AutorizacionEstado getAutorizacionEstadoById(int id_autorizacion_estado);
 
+
 }

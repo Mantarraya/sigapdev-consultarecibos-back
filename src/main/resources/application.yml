@@ -1,6 +1,10 @@
 spring:
   datasource:
+<<<<<<< HEAD
     driverClassName: org.postgresql.Driver
+=======
+    driverClassName: org.postgresql.Driver    
+>>>>>>> origin/master
     url: jdbc:postgresql://172.16.64.133/tcs
     username: modulo4
     password: modulo4
