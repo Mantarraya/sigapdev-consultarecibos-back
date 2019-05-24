@@ -27,7 +27,7 @@ public class MatriculaCabDAOImpl implements IMatriculaCabDAO {
 		return matriculaCab;
 	}
 
-    public MatriculaCab getMatriculaCabByIdPrograma(int id_programa){
+    public MatriculaCab getMatriculaCabByIdPrograma(Integer id_programa){
         String sql = "SELECT cod_alumno, id_prograna, semestre, ciclo FROM matricula_cab WHERE id_programa = ?";
         RowMapper<MatriculaCab> rowMapper = new MatriculaCabProgramaRowMapper();
 		MatriculaCab matriculaCab = jdbcTemplate.queryForObject(sql, rowMapper, id_programa);
@@ -41,7 +41,7 @@ public class MatriculaCabDAOImpl implements IMatriculaCabDAO {
 		return matriculaCab;
     }
 
-    public MatriculaCab getMatriculaCabByCiclo(int ciclo){
+    public MatriculaCab getMatriculaCabByCiclo(Integer ciclo){
         String sql = "SELECT cod_alumno, id_prograna, semestre, ciclo FROM matricula_cab WHERE ciclo = ?";
         RowMapper<MatriculaCab> rowMapper = new MatriculaCabProgramaRowMapper();
 		MatriculaCab matriculaCab = jdbcTemplate.queryForObject(sql, rowMapper, ciclo);
