@@ -19,17 +19,19 @@ public class AlumnoMatriculaAutorizacionImpl implements IAlumnoMatriculaAutoriza
 	private JdbcTemplate jdbcTemplate;
     @Override
     public List<AlumnoMatriculaAutorizacion> getAllAlumnoMatriculaAutorizacion(){
-        String sql = "TODO";
-
+        String sql = "SELECT id_autorizacion,cod_alumno,id_programa,semestre,n_autorizacion,anio_autorizacion,"+
+        "fecha_omision,usuario_emision,importe,penalidad,amortizacion,saldo,fecha_vencimiento,id_rec,id_autoriz_estado "+
+        "FROM alumno_matricula_autorizacion";
 		RowMapper<AlumnoMatriculaAutorizacion> rowMapper = new AlumnoMatriculaAutorizacionRowMappper();
 		return this.jdbcTemplate.query(sql, rowMapper);
     }
     @Override
-    public AlumnoMatriculaAutorizacion getAlumnoMatriculaAutorizacionById(int id_autorizacion){
-        String sql = "TODO";
+    public List<AlumnoMatriculaAutorizacion> getAlumnoMatriculaAutorizacionById(int id_autorizacion){
+        String sql = "SELECT id_autorizacion,cod_alumno,id_programa,semestre,n_autorizacion,anio_autorizacion,"+
+        "fecha_omision,usuario_emision,importe,penalidad,amortizacion,saldo,fecha_vencimiento,id_rec,id_autoriz_estado "+
+        "FROM alumno_matricula_autorizacion where id_autorizacion = "+id_autorizacion;
 		RowMapper<AlumnoMatriculaAutorizacion> rowMapper = new BeanPropertyRowMapper<AlumnoMatriculaAutorizacion>(AlumnoMatriculaAutorizacion.class);
-		AlumnoMatriculaAutorizacion alumnoMatriculaAutorizacion = jdbcTemplate.queryForObject(sql, rowMapper, id_autorizacion);
-		return alumnoMatriculaAutorizacion;
+		return this.jdbcTemplate.query(sql, rowMapper);
     }
 
 }
