@@ -56,4 +56,14 @@ public class MatriculaCabDAOImpl implements IMatriculaCabDAO {
 		RowMapper<MatriculaCab> rowMapper = new MatriculaCabProgramaRowMapper();
 		return this.jdbcTemplate.query(sql, rowMapper);
 	}
+
+	@Override
+	public MatriculaCab getMatriculaCabByIdPrograma(int id_programa) {
+		return null;
+	}
+
+	@Override
+	public MatriculaCab getMatriculaCabByCiclo(int ciclo) {
+		return null;
+	}
 }
